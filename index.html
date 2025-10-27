@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="hi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Simple Static Website</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<header class="navbar">
+		<div class="logo">MySite</div>
+		<nav>
+			<a href="#home">Home</a>
+			<a href="#features">Features</a>
+			<a href="#contact">Contact</a>
+			<button id="themeToggle" class="btn">Toggle Theme</button>
+		</nav>
+	</header>
+
+	<main>
+		<section id="home" class="hero">
+			<h1>Welcome to MySite</h1>
+			<p>Ye ek simple static website hai jo HTML, CSS aur JavaScript se bani hai.</p>
+			<button id="ctaBtn" class="btn primary">Show Alert</button>
+		</section>
+
+		<section id="features" class="section">
+			<h2>Features</h2>
+			<div class="grid">
+				<div class="card">
+					<h3>Fast</h3>
+					<p>Static pages, lightning fast load.</p>
+				</div>
+				<div class="card">
+					<h3>Responsive</h3>
+					<p>Mobile aur desktop dono par achhi lagti hai.</p>
+				</div>
+				<div class="card">
+					<h3>Simple</h3>
+					<p>Clean code aur minimal design.</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="contact" class="section">
+			<h2>Contact</h2>
+			<form id="contactForm" class="form">
+				<label>
+					Name
+					<input type="text" id="name" placeholder="Your name" required>
+				</label>
+				<label>
+					Email
+					<input type="email" id="email" placeholder="you@example.com" required>
+				</label>
+				<label>
+					Message
+					<textarea id="message" rows="4" placeholder="Your message..." required></textarea>
+				</label>
+				<button type="submit" class="btn primary">Send</button>
+				<p id="formStatus" class="status" aria-live="polite"></p>
+			</form>
+		</section>
+	</main>
+
+	<footer class="footer">
+		<p>© <span id="year"></span> MySite. All rights reserved.</p>
+	</footer>
+
+	<script src="script.js"></script>
+</body>
+</html>
