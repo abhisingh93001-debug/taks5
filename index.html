@@ -104,7 +104,41 @@
             }
         });
     }
+function setupChatListeners() {
+    statusInfo.innerText = "ऑनलाइन";
+    
+    conn.on('data', (data) => {
+        // टाइपिंग चेक
+        if (data.type === 'typing') {
+            typingIndicator.innerText = data.isTyping ? "टाइपिंग..." : "";
+        } 
+        // मैसेज रिसीव होना
+        else if (data.type === 'chat') {
+            appendMessage(data.text, 'received', data.id);
+            // 'Seen' सिग्नल वापस भेजें
+            conn.send({ type: 'ack', id: data.id });
+        } 
+        // टिक अपडेट (Seen)
+        else if (data.type === 'ack') {
+            const tick = document.getElementById(`tick-${data.id}`);
+            if (tick) {
+                tick.innerHTML = "✓✓"; 
+                tick.classList.add('seen');
+            }
+        }
+    });
+}
 
+// टाइपिंग डिटेक्टर
+messageInput.addEventListener('input', () => {
+    if (conn) {
+        conn.send({ type: 'typing', isTyping: true });
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(() => {
+            conn.send({ type: 'typing', isTyping: false });
+        }, 2000);
+    }
+});
     // टाइपिंग इवेंट
     messageInput.addEventListener('input', () => {
         if (!conn) return;
