@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnlineShop</title>
+    <!-- CSS को जोड़ना -->
+    <link rel="stylesheet" href="style.css">
+    <!-- PeerJS लाइब्रेरी -->
+    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="user-info">
+                <strong>OnlineShop</strong>
+                <span id="status-info">डिस्कनेक्टेड</span>
+                <div id="typing-indicator"></div>
+            </div>
+            <div class="actions">
+                <button onclick="startVideoCall()" class="icon-btn">📹 Call</button>
+            </div>
+        </header>
+
+        <!-- Connection Area -->
+        <section id="setup-area">
+            <div class="my-id-box">आपकी ID: <b id="my-id">...</b></div>
+            <div class="connect-box">
+                <input type="text" id="peer-id" placeholder="दोस्त की ID डालें">
+                <button onclick="connectToPeer()">Connect</button>
+            </div>
+        </section>
+
+        <!-- Video Calls Area -->
+        <div class="video-container" id="v-con">
+            <video id="local-video" autoplay muted></video>
+            <video id="remote-video" autoplay></video>
+            <button onclick="endCall()" id="end-call-btn">End</button>
+        </div>
+
+        <!-- Chat Window -->
+        <main id="chat-window"></main>
+
+        <!-- Input Area -->
+        <footer class="input-area">
+            <input type="text" id="message-input" placeholder="मैसेज लिखें..." autocomplete="off">
+            <button onclick="sendMessage()" id="send-btn">➤</button>
+        </footer>
+    </div>
+
+    <!-- JavaScript को जोड़ना -->
+    <script src="script.js"></script>
+</body>
+</html>
